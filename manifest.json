@@ -2,7 +2,7 @@
   "domain": "state_grid",
   "name": "国家电网(ONNX版)",
   "version": "0.1.0",
-  "documentation": "https://example.com/state_grid_onnx",
+  "documentation": "https://github.com/bilezhou/state_grid",
   "requirements": [
     "onnxruntime>=1.17.0",
     "numpy",
