@@ -1,1 +1,0 @@
-"""Utility package for state_grid_onnx."""
