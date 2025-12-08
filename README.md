@@ -2,7 +2,7 @@ HassBox的state_grid集成与ARC-MX的sgcc_electricity_new：https://github.com/
 粗暴的结合一起，主打一个能用就行。  
 逻辑是用sgcc_electricity_new的识别来登录国网，然后用state_grid的接口来调数据。  
 账号密码登录。    
-使用方式：将整个state_grid复制到custom_components内就行  
+使用方式：因为懒得搞路径了，只要整个项目打包然后将整个state_grid文件夹复制到custom_components内就行  
 初次添加集成会自动安装onnx依赖，速度有点慢。另外不是很建议haos用，但用也能用吧。  
 要是有添加不了的情况自己改一改代码就行。  
 大佬的UI设计也都是能用的：  
