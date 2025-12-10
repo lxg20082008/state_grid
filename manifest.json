@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "documentation": "https://github.com/bilezhou/state_grid",
   "requirements": [
-    "onnxruntime",
+    "onnxruntime>=1.17.0",
     "numpy",
     "Pillow"
   ],
@@ -13,4 +13,3 @@
   "iot_class": "cloud_polling",
   "integration_type": "hub"
 }
-
