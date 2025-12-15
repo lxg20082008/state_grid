@@ -10,10 +10,18 @@ class StateGridOnnxConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
     async def async_step_user(self, user_input=None):
         """第一个也是唯一一个配置步骤：输入账号和密码。"""
-        if self._async_current_entries():
-            return self.async_abort(reason="single_instance_allowed")
-        if self.hass.data.get(DOMAIN):
-            return self.async_abort(reason="single_instance_allowed")
+        LOGGER.debug("开始配置流程，user_input=%s", user_input)
+        try:
+            if self._async_current_entries():
+                LOGGER.debug("已存在配置条目，中止")
+                return self.async_abort(reason="single_instance_allowed")
+            if self.hass.data.get(DOMAIN):
+                LOGGER.debug("DOMAIN 已存在数据，中止")
+                return self.async_abort(reason="single_instance_allowed")
+        except Exception as e:
+            LOGGER.error("检查配置条目时出错: %s", e)
+            return self.async_abort(reason="unknown")
+        
         errors: dict[str, str] = {}
         account: str = ""
         password: str = ""

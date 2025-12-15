@@ -11,9 +11,13 @@ logger = logging.getLogger(__name__)
 try:
     import onnxruntime
     HAS_ONNX = True
-except ImportError:
+    logger.info("ONNX runtime 导入成功")
+except ImportError as e:
     HAS_ONNX = False
-    logger.warning("ONNX未安装，将使用备用方案")
+    logger.warning(f"ONNX未安装，将使用备用方案: {e}")
+except Exception as e:
+    HAS_ONNX = False
+    logger.warning(f"ONNX导入异常，将使用备用方案: {e}")
 def base64_to_PIL(base64_str: str) -> Image.Image:
     """Base64转PIL图像"""
     base64_data = re.sub('^data:image/.+;base64,', '', base64_str)
