@@ -1,0 +1,16 @@
+{
+  "domain": "state_grid",
+  "name": "国家电网(ONNX版)",
+  "version": "0.1.0",
+  "documentation": "https://github.com/lxg20082008/state_grid",
+  "issue_tracker": "https://github.com/lxg20082008/state_grid/issues",
+  "requirements": [
+    "onnxruntime>=1.17.0",
+    "numpy",
+    "Pillow"
+  ],
+  "codeowners": ["@lxg20082008"],
+  "config_flow": true,
+  "iot_class": "cloud_polling",
+  "integration_type": "hub"
+}
