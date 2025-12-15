@@ -5,7 +5,7 @@
         "title": "State Grid Configuration",
         "description": "Enter your State Grid account information",
         "data": {
-          "username": "Phone Number/Account",
+          "account": "Phone Number/Account",
           "password": "Password"
         }
       }
@@ -16,7 +16,8 @@
       "unknown": "Unknown error"
     },
     "abort": {
-      "already_configured": "This account is already configured"
+      "already_configured": "This account is already configured",
+      "single_instance_allowed": "Only one instance can be configured"
     }
   }
 }

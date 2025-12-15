@@ -5,7 +5,7 @@
         "title": "国家电网配置",
         "description": "请输入您的国家电网账号信息",
         "data": {
-          "username": "手机号/账号",
+          "account": "手机号/账号",
           "password": "密码"
         }
       }
@@ -16,7 +16,8 @@
       "unknown": "未知错误"
     },
     "abort": {
-      "already_configured": "该账号已配置"
+      "already_configured": "该账号已配置",
+      "single_instance_allowed": "只能配置一个实例"
     }
   }
 }
