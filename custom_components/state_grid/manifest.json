@@ -1,6 +1,6 @@
 {
   "domain": "state_grid",
-  "name": "国家电网(ONNX版)",
+  "name": "State Grid",
   "version": "0.1.0",
   "documentation": "https://github.com/lxg20082008/state_grid",
   "issue_tracker": "https://github.com/lxg20082008/state_grid/issues",

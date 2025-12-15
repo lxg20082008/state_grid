@@ -1,4 +1,4 @@
-# X网 (State Grid) Home Assistant 集成
+# State Grid Home Assistant 集成
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 
