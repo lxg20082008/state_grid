@@ -136,7 +136,7 @@ state_grid/
 
 ## 致谢
 
-- 感谢 [HassBox](https://github.com/bilezhou/state_grid) 的原始集成
+- 感谢 [HassBox] 的原始集成
 - 感谢 [ARC-MX](https://github.com/ARC-MX/sgcc_electricity_new) 的验证码识别模型
 - 感谢所有贡献者和用户
 
