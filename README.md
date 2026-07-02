@@ -13,6 +13,7 @@
 - ✅ 获取账户余额
 - ✅ 支持多户号管理
 - ✅ 中英文界面支持
+- ✅ 登录失败自动随机延迟，避免触发X网反爬策略
 
 ## 与原版（bilezhou）的差异
 
@@ -21,10 +22,11 @@
 | 项目 | 内容 | 详情 |
 |------|------|------|
 | 1 | 重构: 按HACS要求重构项目结构 | - 将集成代码移至 custom_components/state_grid/ 目录<br>- 添加 hacs.json 配置文件<br>- 添加中英文翻译文件 (translations/)<br>- 更新 manifest.json 添加 issue_tracker 和 codeowners<br>- 添加 MIT LICENSE<br>- 添加 .gitignore 文件 |
-| 2 | 修复: 解决500错误问题 | - 添加 persistent_notification 导入到 data_client.py<br>- 修复翻译文件字段名: username -> account<br>- 添加缺失的 abort 原因翻译: single_instance_allowed |
+| 2 | 修复: 解决500错误问题 | - 添加 persistent_notification 导入到 data_client.py<br>- 修复翻译文件字段名: username -> account<br>- 添加缺失的 abort 原因翻译: single_instance_allowed<br>- config_flow.py 添加 try/except 和调试日志 |
 | 3 | 统一: 使用'State Grid'作为集成名称 | - 更新hacs.json中的名称为'State Grid'<br>- 更新manifest.json中的名称为'State Grid'<br>- 更新README.md标题为'State Grid Home Assistant 集成' |
 | 4 | 修复: 解决ONNX依赖安装问题 | - 从manifest.json中移除onnxruntime作为必需依赖<br>- 使ONNX成为可选依赖，集成在没有ONNX时使用基础验证码识别<br>- 更新README.md说明可选依赖<br>- 改进captcha_solver.py的错误处理 |
-| 5 | 改进: 添加调试日志和错误处 | - 在config_flow.py中添加调试日志<br>- 改进ONNX导入错误处理<br>- 添加更好的异常处理 |
+| 5 | 改进: 添加调试日志和错误处理 | - 在config_flow.py中添加调试日志<br>- 改进ONNX导入错误处理<br>- 添加更好的异常处理 |
+| 6 | 改进: 登录失败增加随机延迟 | - 检测到登录失效后延迟 20-40 秒再重登（感谢 @alickglyn）<br>- 登录验证失败后延迟 15-30 秒再重试（感谢 @alickglyn）<br>- 避免过快连续登录触发X网反爬保护 |
 
 ## 安装方法
 
@@ -150,12 +152,14 @@ state_grid/
 
 - 感谢 [HassBox] 的原始集成
 - 感谢 [ARC-MX](https://github.com/ARC-MX/sgcc_electricity_new) 的验证码识别模型
+- 感谢 [@alickglyn](https://github.com/alickglyn) 的登录延迟 PR
 - 感谢所有贡献者和用户
 
 ## 版本历史
 
 - **v0.1.3** (2025-12-15): 修复 ONNX 依赖问题，使其成为可选依赖
-- 2026-04-15 ：针对登录错误，增加了随机延迟，尤其是针对登陆错误后重试过快做了延迟处理，增加了登录错误的log输出，内容上更加明确。
+- **2026-04-15**: 增加登录失败随机延迟（@alickglyn），登录失效延迟 40-60s、验证失败延迟 15-30s
+- **2026-06-27**: 调整登录失效延迟为 20-40s，平衡反爬效果与用户体验
 
 ## 支持
 
