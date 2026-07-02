@@ -108,6 +108,8 @@ _C='serviceCode'
 _B='funcCode'
 _A='data'
 import json,time,urllib.parse,datetime
+import asyncio
+import random
 from.const import VERSION
 from.utils.logger import LOGGER
 from.utils.store import async_save_to_store
@@ -215,6 +217,11 @@ class StateGridDataClient:
 		B=await A.__fetch(api,data)
 		if _I not in B:return B
 		if A.__need_login(B[_I]):
+			# --- 修改开始：检测到需要重新登录，增加 40-60 秒延迟 ---
+			force_login_delay = random.uniform(40, 60)
+			LOGGER.warning(f"检测到登录失效 (Code: {B[_I]}), 将在 {force_login_delay:.1f} 秒后强制重新登录...")
+			await asyncio.sleep(force_login_delay)
+			# --- 修改结束 ---
 			await A.__try_password_login()
 			if A.need_login is _N:return await A.__fetch(api,data)
 			if A.need_login is _V:A._show_token_notification()
@@ -342,7 +349,12 @@ class StateGridDataClient:
 		if _G in A and A[_G]!=0:
 			if L<=0:return A
 			else:
-				LOGGER.error('国家电网 - 账号密码登录失败，将重试！');A=await B.password_login(E,C,L-1)
+				# --- 修改开始：增加 15-30 秒随机延迟 ---
+				retry_delay = random.uniform(15, 30)
+				LOGGER.error(f'国家电网 - 登录验证失败，将在 {retry_delay:.1f} 秒后进行第 {L} 次重试...')
+				await asyncio.sleep(retry_delay)
+				# --- 修改结束 ---
+				A=await B.password_login(E,C,L-1)
 				if _G in A and A[_G]!=0:return A
 		B.account=E;B.password=C;return await B.__get_token()
 	async def __get_token(B):
