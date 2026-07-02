@@ -14,6 +14,18 @@
 - ✅ 支持多户号管理
 - ✅ 中英文界面支持
 
+## 与原版（bilezhou）的差异
+
+原版来自 [**bilezhou** https://github.com/bilezhou/state_grid](https://github.com/bilezhou/state_grid) 
+
+| 项目 | 内容 | 详情 |
+|------|------|------|
+| 1 | 重构: 按HACS要求重构项目结构 | - 将集成代码移至 custom_components/state_grid/ 目录<br>- 添加 hacs.json 配置文件<br>- 添加中英文翻译文件 (translations/)<br>- 更新 manifest.json 添加 issue_tracker 和 codeowners<br>- 添加 MIT LICENSE<br>- 添加 .gitignore 文件 |
+| 2 | 修复: 解决500错误问题 | - 添加 persistent_notification 导入到 data_client.py<br>- 修复翻译文件字段名: username -> account<br>- 添加缺失的 abort 原因翻译: single_instance_allowed |
+| 3 | 统一: 使用'State Grid'作为集成名称 | - 更新hacs.json中的名称为'State Grid'<br>- 更新manifest.json中的名称为'State Grid'<br>- 更新README.md标题为'State Grid Home Assistant 集成' |
+| 4 | 修复: 解决ONNX依赖安装问题 | - 从manifest.json中移除onnxruntime作为必需依赖<br>- 使ONNX成为可选依赖，集成在没有ONNX时使用基础验证码识别<br>- 更新README.md说明可选依赖<br>- 改进captcha_solver.py的错误处理 |
+| 5 | 改进: 添加调试日志和错误处 | - 在config_flow.py中添加调试日志<br>- 改进ONNX导入错误处理<br>- 添加更好的异常处理 |
+
 ## 安装方法
 
 ### 通过 HACS (推荐)
