@@ -217,8 +217,8 @@ class StateGridDataClient:
 		B=await A.__fetch(api,data)
 		if _I not in B:return B
 		if A.__need_login(B[_I]):
-			# --- 修改开始：检测到需要重新登录，增加 40-60 秒延迟 ---
-			force_login_delay = random.uniform(40, 60)
+			# --- 修改开始：检测到需要重新登录，增加 20-40 秒延迟 ---
+			force_login_delay = random.uniform(20, 40)
 			LOGGER.warning(f"检测到登录失效 (Code: {B[_I]}), 将在 {force_login_delay:.1f} 秒后强制重新登录...")
 			await asyncio.sleep(force_login_delay)
 			# --- 修改结束 ---
